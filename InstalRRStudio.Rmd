@@ -1,0 +1,75 @@
+---
+title: "Panduan mengunduh dan menginstal R dan RStudio"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: inverse, center, middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+duo_accent(primary_color = "#006747", secondary_color = "#CFC493",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Droid Mono")
+)
+```
+
+
+# Sebelum memulai pengunduhan, 
+- Pastikan laptop atau komputer Anda terhubung dengan jaringan internet 
+- Pastikan ada ruang dalam komputer / laptop Anda untuk R dan RStudio
+
+---
+# Menginstal R
+Kunjungi laman [R](https://www.r-project.org)
+https://www.r-project.org
+
+Klik download R
+![plot](lamanR.png)
+---
+# Pilih salah satu CRAN 
+Hint : Tidak ada aturan baku dalam memilih CRAN, pilih sesuka Anda
+![plot](pilihCRAN.png)
+---
+# Pilih Sistem Operasi yang sesuai dengan laptop Anda
+![plot](pilihOS.png)
+---
+class: inverse, center, middle
+
+# Setelah selesai mengunduh
+Jalankan file unduhan pada laptop / PC Anda
+
+---
+class: center, middle
+# Menginstall RStudio
+Kunjungi laman [RStudio](https://www.rstudio.org)
+https://www.rstudio.org
+
+Klik DOWNLOAD
+![plot](lamanRStudio.png)
+---
+# Pilih Versi 
+Disarankan memilih RStudio Desktop versi gratis (Open Source License)
+
+![plot](pilihversi.png)
+---
+# Pilih Sistem Operasi yang sesuai dengan laptop Anda
+![plot](pilihOSRStudio.png)
+---
+class: inverse, center, middle
+
+# Setelah selesai mengunduh
+Jalankan file unduhan pada laptop Anda
+
+## Selamat menginstall
+
