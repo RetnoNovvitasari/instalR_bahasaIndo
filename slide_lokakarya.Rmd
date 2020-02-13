@@ -1,0 +1,475 @@
+---
+title: "Lokakarya Pengenalan R"
+subtitle: "R untuk Analisa dan Visualisasi Data"
+author: "Retno Novvitasari Hery Daryono"
+institute: "UIN Maulana Malik Ibrahim Malang"
+date: "2019/11/04 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Tujuan Lokakarya
+
+- Berkenalan dengan R dan RStudio
+
+- Berkenalan dengan konsep dasar R
+
+- Memulai bekerja dengan R dan RStudio
+
+.pull-left[
+
+![plot](R_logo.png)
+]
+
+.pull-right[
+
+![plot](RStudio-logo.png)
+
+]
+
+---
+# Apakah R itu ?
+
+--
+
+- Bahasa Pemrograman
+
+--
+
+- Dirintis oleh Robert Gentleman dan Ross Ihaka
+
+--
+
+- Perangkat Lunak untuk melakukan berbagai hal terkait statistika, visualisasi data, dll
+
+--
+
+- Awalnya ditujukan untuk pengajaran pengenalan analisa data
+
+--
+
+- Bersifat Open-Source ( Terima kasih kepada Marthin Machler)
+
+--
+
+- Didukung oleh komunitas yang besar
+
+---
+
+# Mengapa R ?
+
+--
+
+- Digunakan secara luas di hampir semua disiplin ilmu
+
+--
+
+- Tak berbayar
+
+--
+
+- Dapat dijalankan di hampir semua OS
+
+---
+
+# R Studio itu apa ?
+
+--
+
+- IDE untuk R yang bersifat gratis 
+
+--
+
+- Diciptakan oleh JJ Allaire
+
+--
+
+- Membuat R lebih mudah dioperasikan
+
+---
+
+class: inverse, center, middle
+
+# Ayo Mulai
+
+---
+
+# Menginstall R
+
+--
+
+- Kunjungi laman [R](https://www.r-project.org)
+- https://www.r-project.org
+
+--
+
+- Pilih cermin CRAN (tidak harus yang dekat dengan tempat tinggal kita)
+
+--
+
+- R versi terbaru adalah 3.6.1 (Action of the Toes)
+
+---
+
+#Menginstal R Studio
+
+--
+
+Kunjungi laman [RStudio IDE](https://www.rstudio.com/products/rstudio/)
+www.rstudio.com/products/rstudio
+
+---
+
+# Berinteraksi dengan RStudio dan R
+
+R Studio mempunyai 4 jendela
+
+.pull-left[
+1. Source, menampilkan script maupun dokumen
+2. Environment / History, menampilkan hasil dari perintah yang kita eksekusi
+]
+.pull-right[
+3. Files / Plot / Packages / Help / Viewer
+4. Console
+]
+
+![plot](consoleR.png)
+
+---
+
+# Intermezzo, Post It Sticker dan Maknanya
+
+Hijau neon : I'm done. It's okay.
+
+Orange : Still working
+
+Pink : Need Help
+
+---
+
+# Membuat Proyek
+
+- memudahkan pekerjaan 
+- membuatkan slot untuk bekerja dengan R (working directory)
+- RStudio -> File -> New Project
+- Buat folder yang diperlukan ( misal data, script, data mentah, plot)
+- Mengecek apakah kita sudah di working directory yang tepat
+
+```{r eval=FALSE, tidy=FALSE}
+getwd()
+```
+
+---
+
+# Objek
+
+--
+
+adalah sebuah nama yang mempunyai suatu nilai yang diasosiasikan dengan nama tersebut
+
+--
+
+- Menggunakan simbol '<-' (Ctrl + -) atau '='
+- Hindari penggunaan (.) 
+- Disarankan singkat dan mudah dipahami
+
+--
+
+contoh : membuat variabel, namanya waktu_j
+
+```{r eval=FALSE, tidy=FALSE}
+waktu_j <- 1.5
+jarak_km = 35
+kecepatan <- waktu_j / jarak_km
+```
+
+--
+
+- membuat objek tidak otomotatis menampilkan nilainya
+- panggil objek agar console menampilkan nilainya
+
+```{r eval=FALSE, tidy=FALSE}
+waktu_j 
+jarak_km
+kecepatan
+```
+---
+
+# Komentar
+
+- Komentar sangat penting untuk memberikan penjelasan tentang perintah, fungsi, maupun objek yang kita buat di script
+- Buat komentar dengan mengetik tanda '#', maka komputer tidak mengenalinya sebagai perintah
+
+---
+
+# R sebagai kalkulator
+
+```{r eval=FALSE, tidy=FALSE}
+5 + 9
+(8-12)/5
+2^2 
+```
+
+## Fungsi Matematika lainnya
+
+- Trigonometri : sin(), cos(), tan(), dll
+- Pembulatan : round(), sqrt()
+- Logaritma dan exponensial : exp(), log()
+
+--
+
+## Saatnya Latihan
+(Bagian 1)
+
+---
+
+# Fungsi dan Argumennya
+
+--
+
+- adalah 'canned script', yang mengotomatisasi perintah-perintah
+- harus didefinisikan terlebih dahulu, bisa juga didapatkan dari package yang tersedia di R
+- terdiri atas satu atau lebih input, namanya argumen
+- contoh fungsi: round()
+
+```{r eval=FALSE, tidy=FALSE}
+round(6.8768)
+```
+
+--
+
+Pada contoh di atas, fungsi round mempunyai satu argumen. Untuk megecek berapa argumen yang dipunyai fungsi round, kita gunakan fungsi args()
+
+```{r eval=FALSE, tidy=FALSE}
+args(round)
+```
+
+Ternyata fungsi round mempunyai argumen lain yaitu digits.
+
+```{r eval=FALSE, tidy=FALSE}
+round(5.897456, digits = 3)
+```
+
+--
+
+Jika kita menampilkan argumen di dalam fungsi, maka kita membalik urutannya
+
+```{r eval=FALSE, tidy=FALSE}
+round(digits = 3, x = 5.897456)
+```
+
+---
+
+# Package
+
+- package adalah semacam aplikasi di R
+- suatu package dapat berisi fungsi-fungsi, data, atau dokumentasi
+- terdapat lebih dari 10.000 package di R
+
+## Menginstal package
+
+- melalui panel di RStudio: Tools -> Install Packages -> Ketik nama package
+- melalui panel source
+
+```{r eval=FALSE, tidy=FALSE}
+install.packages("ggplot2")
+```
+
+- menginstal package R cukup dilakukan sekali
+- Agar bisa digunakan, package yang sudah terinstal di R harus dipanggil setiap memulai sesi di R
+
+```{r eval=FALSE, tidy=FALSE}
+library(ggplot2)
+```
+
+---
+
+# Vektor
+
+- adalah tipe paling umum dan paling dasar di R
+- terdiri atas suatu seri dari nilai-nilai, yang nilai tersebut bisa berupa angka atau karakter
+- Mari kita buat vektor dengan elemen berupa angka, namanya tinggi_cm
+
+```{r eval=FALSE, tidy=FALSE}
+tinggi_cm <- c(156, 148, 139, 161)
+```
+
+--
+
+- vektor juga bisa terdiri atas karakter
+```{r eval=FALSE, tidy=FALSE}
+id <- c("Sony", "Chiba", "Ramon", "Guillaume")
+```
+
+- Penggunaan tanda petik ("") di antara karakter adalah sangat penting
+
+---
+
+# Fungsi untuk memeriksa vektor
+
+
+```{r eval=FALSE, tidy=FALSE}
+length(tinggi_cm) # berapa banyak elemen di dalam vektor
+length(id)
+class(tinggi_cm) # apa tipe dari elemen di dalam vektor
+class(id)
+str(tinggi_cm) # overview dari objek dan elemen vektor
+str(id)
+tinggi_cm <- c(tinggi_cm, 142) # menambahkan elemen lain ke vektor
+```
+
+---
+
+# Vektor Atomik
+
+--
+
+- adalah tipe data paling sederhana di R
+
+--
+
+- yaitu vektor baris dengan satu tipe  elemen vektor
+
+--
+
+- Ada 6 tipe elemen penyusun vektor atomik
+1. "numeric" atau "double"
+2. "character"
+3. "logical" (TRUE dan FALSE)
+4. "integer", yaitu angka integer (misal: 2L. L adalah integer)
+5. "complex", yaitu angka dengan bagian real dan imaginer (misal: 1 + 4i)
+6. "raw", untuk bitstream, kita tidak akan membahasnya saat ini
+
+--
+
+Untuk mengecek tipe dari vektor, kita bisa gunakan fungsi typeof()
+
+```{r eval=FALSE, tidy=FALSE}
+typeof(tinggi_cm)
+```
+
+---
+
+# Tipe-tipe Data di R
+
+- Vektor (vector)
+- List (list)
+- Matriks (matrice)
+- Bingkai data (data.frame)
+- Faktor (factor), dan
+- Array (Array)
+
+---
+
+# Mensubset Vektor
+
+--
+
+- Menggunakan []
+
+```{r eval=FALSE, tidy=FALSE}
+tinggi_cm [2]
+tinggi_cm [c(3,4)]
+```
+
+--
+
+- Menambahkan value pada vektor
+
+```{r eval=FALSE, tidy=FALSE}
+tinggi_tambahan <- tinggi_cm[c(2, 3, 1, 4, 4, 2, 1)]
+tinggi_tambahan
+```
+
+---
+
+# Missing Data
+
+- Ditampilkan sebagai NA
+
+- Data yang hilang dapat diabaikan dalam penghitungan dengan menambahkan argumen na.rm = TRUE
+
+```{r eval=FALSE, tidy=FALSE}
+berat_kg <- c(2, 4, 8, 4, NA, 2)
+mean(berat_kg)
+max(berat_kg)
+mean(berat_kg, na.rm=TRUE)
+max(berat_kg, na.rm=TRUE)
+```
+
+--
+
+- Fungsi lain yang berhubungan dengan missing data
+
+```{r eval=FALSE, tidy=FALSE}
+berat_baru <- berat_kg [!is.na(berat_kg)] # mengekstrak elemen yang tidak ada NA nya
+berat_baru
+berat_new <- na.omit(berat_kg) # menghilangkan NA
+berat_new
+```
+
+--
+
+Saatnya Latihan (Latihan 2)
+---
+
+# Mencari Bantuan
+
+- Menggunakan fungsi help() atau '?', atau mengklik panel Help di RStudio
+
+```{r eval=FALSE, tidy=FALSE}
+help(sd)
+?sd
+```
+
+- Pencarian kata kunci, menggunakan fungsi apropos(), kata kunci diantara tanda petik
+
+```{r eval=FALSE, tidy=FALSE}
+apropos("mean")
+```
+
+- Mencari contoh penggunaan suatu fungsi, menggunakan fungsi example() 
+
+```{r eval=FALSE, tidy=FALSE}
+help(mean)
+example(mean)
+```
+
+- Mencari bantuan secara daring, gunakan [R], misal: Data visualization with [R]
+
+---
+
+class: inverse, center, middle
+
+# Slide selanjutnya,
+
+--
+
+"Data, Data, dan Data"
+
+---
+
+class: inverse, center, middle
+
+# Terima kasih 
+
+Slide ini dibuat menggunakan package R  [**xaringan**](https://github.com/yihui/xaringan)
+
+https://github.com/yihui/xaringan
+---
+
+# Sumber:
+
+https://datacarpentry.org
+
+https://apreshill.github.io/data-vis-labs-2018/slides/06-slides_xaringan.html#30
+
+https://R-project.org
+
+https://rstudio.com/products/rstudio/
+
